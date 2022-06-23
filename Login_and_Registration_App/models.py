@@ -1,6 +1,7 @@
 from errno import EROFS
 from django.db import models
 import re
+import email
 # Create your models here.
 
 class UserManger (models.Manager):
@@ -13,18 +14,18 @@ class UserManger (models.Manager):
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if not EMAIL_REGEX.match(PostData['email']):             
             errors['email'] = "Invalid email address!"
-        if len(PostData ['Password'])<8:
-            errors['Password']='password should be at least 8 characters'
-        if not PostData ['Password']==PostData['confirm_pw']:
+        if len(PostData ['password'])<8:
+            errors['password']='password should be at least 8 characters'
+        if not PostData ['password']==PostData['confirm_pw']:
             errors['confirm_pw']='Password and confirm should be match'
         
         return errors
 
 class users(models.Model):
-    Fname= models.CharField(max_length=255)
-    Lname= models.CharField(max_length=255)
-    Email= models.EmailField(max_length=255)
-    Password=models.CharField(max_length=255)
+    firest_name= models.CharField(max_length=255)
+    last_name= models.CharField(max_length=255)
+    email= models.EmailField(max_length=255)
+    password=models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
     objects= UserManger()
