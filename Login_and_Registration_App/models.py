@@ -1,7 +1,6 @@
 from errno import EROFS
 from django.db import models
 import re
-import email
 # Create your models here.
 
 class UserManger (models.Manager):
