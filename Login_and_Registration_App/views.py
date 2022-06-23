@@ -19,10 +19,10 @@ def register(request):
             return redirect('/')
 
         else:
-            Fname=request.POST['Fname']
-            Lname=request.POST['Lname']
-            Email=request.POST['Email']
-            Password=request.POST['Password']
+            firest_name=request.POST['firest_name']
+            last_name=request.POST['last_name']
+            Email=request.POST['email']
+            Password=request.POST['password']
             pwhash=bcrypt.hashpw(Password.encode(),bcrypt.gensalt()).decode()
 
             new_user=users.objects.create(Fname=Fname,Lname=Lname,Email=Email,Password=pwhash)
@@ -40,9 +40,9 @@ def register(request):
 
 def login(request):
     if request.method=='POST':
-        users_all = users.objects.filter(Email=request.POST['Email'])
+        users_all = users.objects.filter(Email=request.POST['email'])
         if len(users_all)==1:
-            if not bcrypt.checkpw(request.POST['Password'].encode(),users_all[0].Password.encode()):
+            if not bcrypt.checkpw(request.POST['password'].encode(),users_all[0].Password.encode()):
                 messages.error(request, "Email or Password is incorrect!")
                 return redirect('/')
             else:

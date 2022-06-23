@@ -6,13 +6,13 @@ import re
 class UserManger (models.Manager):
     def validator(self,PostData):
         errors={}
-        if len(PostData['Fname'])<2:
-            errors['Fname']='first name should be at least 2 characters'
-        if len(PostData['Lname'])<2:
-            errors['Lname']='last name should be at least 2 characters'
+        if len(PostData['firest_name'])<2:
+            errors['firest_name']='first name should be at least 2 characters'
+        if len(PostData['last_name'])<2:
+            errors['last_name']='last name should be at least 2 characters'
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if not EMAIL_REGEX.match(PostData['Email']):             
-            errors['Email'] = "Invalid email address!"
+            errors['email'] = "Invalid email address!"
         if len(PostData ['Password'])<8:
             errors['Password']='password should be at least 8 characters'
 
