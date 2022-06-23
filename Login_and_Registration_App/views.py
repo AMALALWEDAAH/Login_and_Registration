@@ -15,27 +15,17 @@ def register(request):
             for key , value in errors.items():
                 messages.error(request,value)
             
-
             return redirect('/')
-
         else:
             firest_name=request.POST['firest_name']
             last_name=request.POST['last_name']
             Email=request.POST['email']
             Password=request.POST['password']
             pwhash=bcrypt.hashpw(Password.encode(),bcrypt.gensalt()).decode()
-
             new_user=users.objects.create(Fname=Fname,Lname=Lname,Email=Email,Password=pwhash)
             new_user.save()
             request.session['loggedInUser'] = new_user.id
             return redirect('/sucess')
-
-            
-        
-
-    
-
-
 
 
 def login(request):
@@ -51,7 +41,6 @@ def login(request):
         else:
             messages.error(request, "Email does not exist!")
             return redirect('/')
-            
 
 
 

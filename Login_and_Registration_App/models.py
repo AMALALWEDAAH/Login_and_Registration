@@ -15,15 +15,10 @@ class UserManger (models.Manager):
             errors['email'] = "Invalid email address!"
         if len(PostData ['Password'])<8:
             errors['Password']='password should be at least 8 characters'
-
         if not PostData ['Password']==PostData['confirm_pw']:
             errors['confirm_pw']='Password and confirm should be match'
         
         return errors
-    
-
-
-
 
 class users(models.Model):
     Fname= models.CharField(max_length=255)
