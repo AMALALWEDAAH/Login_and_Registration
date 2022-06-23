@@ -30,7 +30,6 @@ class users(models.Model):
     Lname= models.CharField(max_length=255)
     Email= models.EmailField(max_length=255)
     Password=models.CharField(max_length=255)
-    #confirm_pw=models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
     objects= UserManger()
